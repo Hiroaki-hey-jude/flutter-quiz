@@ -15,6 +15,9 @@ class _TopPageState extends State<TopPage> {
         appBar: AppBar(
           title: Text('Flutter Quiz'),
         ),
+        body: Container(
+          child: Text('練習'),
+        ),
       ),
     );
   }
