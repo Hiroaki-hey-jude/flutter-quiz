@@ -10,9 +10,11 @@ class TopPage extends StatefulWidget {
 class _TopPageState extends State<TopPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter Quiz'),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter Quiz'),
+        ),
       ),
     );
   }
