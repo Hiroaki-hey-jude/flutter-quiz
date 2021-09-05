@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/screen/question_page.dart';
 
 class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);
@@ -50,11 +51,16 @@ class _TopPageState extends State<TopPage> {
                   width: 150,
                   height: 40,
                   child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Start',
-                      style: TextStyle(
-                        fontSize: 20
-                      ),
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuestionPage()),
+                          (_) => false);
+                    },
+                    child: Text(
+                      'Start',
+                      style: TextStyle(fontSize: 20),
                     ),
                   ),
                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/top_page.dart';
+import 'package:quiz/screen/top_page.dart';
 
 void main() {
   runApp(MyApp());
