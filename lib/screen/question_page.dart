@@ -13,7 +13,7 @@ class QuestionPage extends StatefulWidget {
 class _QuestionPageState extends State<QuestionPage> {
   final questions = [
     Question(
-      text: 'Flutterはどのプログラミング言語を使ってアプリを作りますか',
+      text: 'Flutterはどのプログラミング言語を使ってアプリを作りますか？',
       options: [
         Option(code: 'A', text: 'C++', isCorrect: false),
         Option(code: 'B', text: 'Python', isCorrect: false),
@@ -23,14 +23,24 @@ class _QuestionPageState extends State<QuestionPage> {
       solution: 'FlutterはDartというプログラミン言語を採用しています。',
     ),
     Question(
-      text: '子要素を縦に配列したい時に使えるWidgetは何ですか',
+      text: 'Flutterの状態管理で有名なものは何か',
+      options: [
+        Option(code: 'A', text: 'Future', isCorrect: false),
+        Option(code: 'B', text: 'Riverpod', isCorrect: true),
+        Option(code: 'C', text: 'Cube', isCorrect: false),
+        Option(code: 'D', text: 'Stream', isCorrect: false),
+      ],
+      solution: 'Riverpod',
+    ),
+    Question(
+      text: '子要素を縦に配列したい時に使えるWidgetは何ですか？',
       options: [
         Option(code: 'A', text: 'Row', isCorrect: false),
         Option(code: 'B', text: 'Wrap', isCorrect: false),
         Option(code: 'C', text: 'ListView', isCorrect: true),
         Option(code: 'D', text: 'Text', isCorrect: false),
       ],
-      solution: 'FlutterはDartというプログラミン言語を採用しています。',
+      solution: '正解はListViewです。',
     ),
   ];
   int questionNum = 0;
@@ -88,7 +98,7 @@ class _QuestionPageState extends State<QuestionPage> {
             if (questions[questionNum].options![index].isCorrect == true) {
               numOfCorrectAnswer++;
             }
-            if (questionNum + 1 < 2) {
+            if (questionNum + 1 < questions.length) {
               setState(() {
                 questionNum++;
               });
