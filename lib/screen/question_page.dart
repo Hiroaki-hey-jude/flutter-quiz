@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/model/option.dart';
+import 'package:quiz/screen/last_page.dart';
 import '../model/question.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -32,60 +33,76 @@ class _QuestionPageState extends State<QuestionPage> {
       solution: 'FlutterはDartというプログラミン言語を採用しています。',
     ),
   ];
+  int questionNum = 0;
+  int numOfCorrectAnswer = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.blueAccent,
-        child: ListView.builder(
-          //scrollDirection: Axis.horizontal,
-          itemCount: questions.length,
-          itemBuilder: (context, index){
-            return Column(
-              children: [
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height*0.3,
-                    child: Text(questions[index].text!,
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.blueAccent,
+          child: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 90, 15, 15),
+                  child: Text(
+                    questions[questionNum].text!,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
                     ),
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*0.7,
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.all(12),
                   child: Column(
                     children: [
-                      ElevatedButton(
-                          onPressed: () {},
-                          child: Text(questions[index].options![0].text!),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text(questions[index].options![1].text!),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text(questions[index].options![2].text!),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text(questions[index].options![3].text!),
-                      ),
+                      answerButton(0),
+                      answerButton(1),
+                      answerButton(2),
+                      answerButton(3),
                     ],
                   ),
-                )
-              ],
-            );
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+
+  Widget answerButton(int index) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: double.infinity,
+        height: 50,
+        child: ElevatedButton(
+          onPressed: () {
+            if (questions[questionNum].options![index].isCorrect == true) {
+              numOfCorrectAnswer++;
+            }
+            if (questionNum + 1 < 2) {
+              setState(() {
+                questionNum++;
+              });
+            } else {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => LastPage(numOfCorrectAnswer)));
+            }
           },
+          child: Text(
+            questions[questionNum].options![index].text!,
+            style: TextStyle(
+              fontSize: 30,
+            ),
+          ),
         ),
       ),
     );

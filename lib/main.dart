@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/screen/splash.dart';
 import 'package:quiz/screen/top_page.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: TopPage(),
+      home: Splash(),
       theme: ThemeData.light(),
     );
   }
