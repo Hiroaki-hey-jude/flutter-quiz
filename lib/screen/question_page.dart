@@ -104,7 +104,7 @@ class _QuestionPageState extends State<QuestionPage> {
               });
             } else {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => LastPage(numOfCorrectAnswer)));
+                  builder: (context) => LastPage(numOfCorrectAnswer, questions)));
             }
           },
           child: Text(
