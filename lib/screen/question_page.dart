@@ -45,6 +45,7 @@ class _QuestionPageState extends State<QuestionPage> {
   ];
   int questionNum = 0;
   int numOfCorrectAnswer = 0;
+  Color color = Colors.blueAccent;
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +95,9 @@ class _QuestionPageState extends State<QuestionPage> {
         width: double.infinity,
         height: 50,
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: color,
+          ),
           onPressed: () {
             if (questions[questionNum].options![index].isCorrect == true) {
               numOfCorrectAnswer++;
@@ -104,7 +108,8 @@ class _QuestionPageState extends State<QuestionPage> {
               });
             } else {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => LastPage(numOfCorrectAnswer, questions)));
+                  builder: (context) =>
+                      LastPage(numOfCorrectAnswer, questions)));
             }
           },
           child: Text(
