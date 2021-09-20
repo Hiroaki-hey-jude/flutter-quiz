@@ -5,6 +5,7 @@ import 'package:quiz/global/email_password_auth.dart';
 import 'package:quiz/global/enum.dart';
 import 'package:quiz/global/reg_exp.dart';
 import 'package:quiz/screen/question_page.dart';
+import 'package:quiz/screen/start_page.dart';
 import 'package:quiz/widget/common_auth.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -145,7 +146,7 @@ class _LogInScreenState extends State<LogInScreen> {
             String message = '';
             if (emailLogInResults == EmailLogInResults.LogInCompleted)
               Navigator.pushAndRemoveUntil(
-                  context, MaterialPageRoute(builder: (_) => QuestionPage()), (
+                  context, MaterialPageRoute(builder: (_) => StartPage()), (
                   route) => false); // need to start from here
             else if (emailLogInResults == EmailLogInResults.EmailNotVerified) {
               message =

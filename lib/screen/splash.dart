@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/screen/question_page.dart';
 import 'package:quiz/screen/sign_up_page.dart';
+import 'package:quiz/screen/start_page.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _SplashState extends State<Splash> {
             .get()
             .then((DocumentSnapshot result) => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => QuestionPage()))
+                    MaterialPageRoute(builder: (context) => StartPage()))
                 .catchError((err) => print(err)));
       }
     });
