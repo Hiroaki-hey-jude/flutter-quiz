@@ -10,6 +10,7 @@ Widget commonTextFormField({
   return Container(
     padding: EdgeInsets.only(left: 20, right: 20, top: 20),
     child: TextFormField(
+      obscureText: true,
       validator: validator,
       controller: textEditingController,
       style: TextStyle(
