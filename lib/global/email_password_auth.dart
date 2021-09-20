@@ -12,6 +12,7 @@ class EmailPasswordAuth{
       }
       return EmailSignResults.SignUpNotCompleted;
     }catch(e){
+      print('why');
       print('error in sign up ${e.toString()}');
       return EmailSignResults.EmailAlreadyPresent;
     }

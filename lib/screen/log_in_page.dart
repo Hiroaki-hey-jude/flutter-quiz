@@ -25,8 +25,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.blueAccent,
         body: GestureDetector(
           onTap: () {
@@ -101,8 +100,7 @@ class _LogInScreenState extends State<LogInScreen> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 
   Widget loginAuthButton(BuildContext context, String buttonName) {

@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -137,6 +140,15 @@ class _SignUpPageState extends State<SignUpPage> {
                 this._isLoading = true;
               });
             }
+
+            FirebaseAuth.instance.createUserWithEmailAndPassword(email: this.email.text, password: this.password.text)
+            .then((currentUser) => FirebaseFirestore.instance.collection('users')
+                .add({
+                  'email': email.text,
+                  'uid': currentUser.user!.uid,
+                 }).then((value) => print(value.id))
+            );
+            print('これはできてるんですか？');
 
             final EmailSignResults response = await this
                 .emailPasswordAuth
