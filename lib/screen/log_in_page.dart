@@ -26,82 +26,82 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.blueAccent,
-        body: GestureDetector(
-          onTap: () {
-            final FocusScopeNode currentScope = FocusScope.of(context);
-            if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
-              FocusManager.instance.primaryFocus!.unfocus();
-            }
-          },
-          child: LoadingOverlay(
-            isLoading: _isLoading,
-            child: Container(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  SizedBox(
-                    height: 56,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Log-In',
-                      style: TextStyle(
-                        fontSize: 30.0,
-                        color: Colors.white,
+    return GestureDetector(
+      onTap: () {
+        final FocusScopeNode currentScope = FocusScope.of(context);
+        if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+          FocusManager.instance.primaryFocus!.unfocus();
+        }
+      },
+      child: Scaffold(
+          backgroundColor: Colors.blueAccent,
+          body: LoadingOverlay(
+              isLoading: _isLoading,
+              child: Container(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    SizedBox(
+                      height: 56,
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Log-In',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: MediaQuery
-                        .of(context)
-                        .size
-                        .height / 2.5,
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    padding: EdgeInsets.only(top: 20, bottom: 20),
-                    child: Form(
-                      key: this._logInKey,
-                      child: ListView(
-                        children: [
-                          commonTextFormField(
-                              hintText: 'Email',
-                              validator: (inputVal) {
-                                if (!emailRegex.hasMatch(inputVal.toString()))
-                                  return 'Email format is not matching';
-                                return null;
-                              },
-                              textEditingController: this.email),
-                          commonTextFormField(
-                              hintText: 'Password',
-                              validator: (String? inputVal) {
-                                if (inputVal!.length < 6)
-                                  return 'Password must be at least 6 characters';
-                                return null;
-                              },
-                              textEditingController: this.password),
-                          loginAuthButton(context, 'Log-In'),
-                        ],
+                    Container(
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height / 2.5,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      padding: EdgeInsets.only(top: 20, bottom: 20),
+                      child: Form(
+                        key: this._logInKey,
+                        child: ListView(
+                          children: [
+                            commonTextFormField(
+                                hintText: 'Email',
+                                validator: (inputVal) {
+                                  if (!emailRegex.hasMatch(inputVal.toString()))
+                                    return 'Email format is not matching';
+                                  return null;
+                                },
+                                textEditingController: this.email),
+                            commonTextFormField(
+                                hintText: 'Password',
+                                validator: (String? inputVal) {
+                                  if (inputVal!.length < 6)
+                                    return 'Password must be at least 6 characters';
+                                  return null;
+                                },
+                                textEditingController: this.password),
+                            loginAuthButton(context, 'Log-In'),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Center(
-                    child: Text(
-                      'Or Continue With',
-                      style: TextStyle(color: Colors.white24, fontSize: 20.0),
+                    Center(
+                      child: Text(
+                        'Or Continue With',
+                        style: TextStyle(color: Colors.white24, fontSize: 20.0),
+                      ),
                     ),
-                  ),
-                  switchAnotherAuthScreen(context, "Don't you have an account? ", 'sign-up'),
-                ],
+                    switchAnotherAuthScreen(context, "Don't you have an account? ", 'sign-up'),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      );
+    );
   }
 
   Widget loginAuthButton(BuildContext context, String buttonName) {
