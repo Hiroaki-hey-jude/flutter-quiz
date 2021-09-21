@@ -48,7 +48,7 @@ class _SplashState extends State<Splash> {
           'Flutter Quiz',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 50.0,
+            fontSize: 48.0,
             color: Colors.white,
           ),
         ),
