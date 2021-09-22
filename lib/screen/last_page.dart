@@ -8,6 +8,7 @@ class LastPage extends StatefulWidget {
   String? userName;
 
   LastPage(this.num, this.question, this.userName);
+
   @override
   _LastPageState createState() => _LastPageState();
 }
@@ -16,59 +17,67 @@ class _LastPageState extends State<LastPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      body: Center(
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 50, 5, 10),
-              child: Container(
+        backgroundColor: Colors.blueAccent,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: AppBar(
+            title: Text('hello'),
+          ),
+        ),
+        body: ListView.builder(
+            shrinkWrap: true,
+            itemCount: widget.question.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Card(
+                color: Colors.lightBlueAccent,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('答え',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),),
-                    for(int i = 0; i < widget.question.length; i++)
-                      Text('${i+1}. ${widget.question[i].solution}',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold
                       ),),
+                    Text(widget.question[index].text),
+                    Card(
+                      color: widget.question[index].options[0].isCorrect
+                          ? Colors.red
+                          : Colors.lightBlueAccent,
+                      child: Container(
+                        width: double.infinity,
+                        child: Text(widget.question[index].options[0].text),
+                      ),
+                    ),
+                    Card(
+                      color: widget.question[index].options[1].isCorrect
+                          ? Colors.red
+                          : Colors.lightBlueAccent,
+                      child: Container(
+                        width: double.infinity,
+                        child: Text(widget.question[index].options[1].text),
+                      ),
+                    ),
+                    Card(
+                      color: widget.question[index].options[2].isCorrect
+                          ? Colors.red
+                          : Colors.lightBlueAccent,
+                      child: Container(
+                        width: double.infinity,
+                        child: Text(widget.question[index].options[2].text),
+                      ),
+                    ),
+                    Card(
+                      color: widget.question[index].options[3].isCorrect
+                          ? Colors.red
+                          : Colors.lightBlueAccent,
+                      child: Container(
+                        width: double.infinity,
+                        child: Text(widget.question[index].options[3].text),
+                      ),
+                    ),
                   ],
                 ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Text('${widget.userName}さん'),
-            Text(
-              'おめでとう!\n${widget.num}個成功したよ',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => QuestionPage()),
-                    (route) => false);
-              },
-              child: Text(
-                'もう一回プレイする',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+              );
+
+            }));
   }
 }
