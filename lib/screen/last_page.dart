@@ -19,65 +19,81 @@ class _LastPageState extends State<LastPage> {
     return Scaffold(
         backgroundColor: Colors.blueAccent,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
+          preferredSize: Size.fromHeight(70.0),
           child: AppBar(
-            title: Text('hello'),
+            title: widget.userName != ''
+                ? Text('${widget.userName}さんの正解数は${widget.num}です')
+                : Text('名無しさんの正解数は${widget.num}です'),
+            leading:
+              IconButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => StartPage(),
+                    ),
+                  );
+                },
+                icon: Icon(Icons.arrow_back_sharp),
+              ),
           ),
         ),
-        body: ListView.builder(
-            shrinkWrap: true,
-            itemCount: widget.question.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                color: Colors.lightBlueAccent,
-                child: Column(
-                  children: [
-                    Text('答え',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold
-                      ),),
-                    Text(widget.question[index].text),
-                    Card(
-                      color: widget.question[index].options[0].isCorrect
-                          ? Colors.red
-                          : Colors.lightBlueAccent,
-                      child: Container(
-                        width: double.infinity,
-                        child: Text(widget.question[index].options[0].text),
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(1.0, 4.0, 1.0, 1.0),
+          child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: widget.question.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  color: Colors.lightBlueAccent,
+                  child: Column(
+                    children: [
+                      Text(
+                        '答え',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    Card(
-                      color: widget.question[index].options[1].isCorrect
-                          ? Colors.red
-                          : Colors.lightBlueAccent,
-                      child: Container(
-                        width: double.infinity,
-                        child: Text(widget.question[index].options[1].text),
+                      Text(widget.question[index].text),
+                      Card(
+                        color: widget.question[index].options[0].isCorrect
+                            ? Colors.red
+                            : Colors.lightBlueAccent,
+                        child: Container(
+                          width: double.infinity,
+                          child: Text(widget.question[index].options[0].text),
+                        ),
                       ),
-                    ),
-                    Card(
-                      color: widget.question[index].options[2].isCorrect
-                          ? Colors.red
-                          : Colors.lightBlueAccent,
-                      child: Container(
-                        width: double.infinity,
-                        child: Text(widget.question[index].options[2].text),
+                      Card(
+                        color: widget.question[index].options[1].isCorrect
+                            ? Colors.red
+                            : Colors.lightBlueAccent,
+                        child: Container(
+                          width: double.infinity,
+                          child: Text(widget.question[index].options[1].text),
+                        ),
                       ),
-                    ),
-                    Card(
-                      color: widget.question[index].options[3].isCorrect
-                          ? Colors.red
-                          : Colors.lightBlueAccent,
-                      child: Container(
-                        width: double.infinity,
-                        child: Text(widget.question[index].options[3].text),
+                      Card(
+                        color: widget.question[index].options[2].isCorrect
+                            ? Colors.red
+                            : Colors.lightBlueAccent,
+                        child: Container(
+                          width: double.infinity,
+                          child: Text(widget.question[index].options[2].text),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              );
-
-            }));
+                      Card(
+                        color: widget.question[index].options[3].isCorrect
+                            ? Colors.red
+                            : Colors.lightBlueAccent,
+                        child: Container(
+                          width: double.infinity,
+                          child: Text(widget.question[index].options[3].text),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+        ));
   }
 }
