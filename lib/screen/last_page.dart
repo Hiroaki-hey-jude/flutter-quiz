@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/screen/question_page.dart';
+import 'package:quiz/screen/start_page.dart';
 
 class LastPage extends StatefulWidget {
   int num = 0;
   var question = [];
+  String? userName;
 
-  LastPage(this.num, this.question);
-
+  LastPage(this.num, this.question, this.userName);
   @override
   _LastPageState createState() => _LastPageState();
 }
@@ -43,6 +44,7 @@ class _LastPageState extends State<LastPage> {
               ),
             ),
             SizedBox(height: 20,),
+            Text('${widget.userName}さん'),
             Text(
               'おめでとう!\n${widget.num}個成功したよ',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),

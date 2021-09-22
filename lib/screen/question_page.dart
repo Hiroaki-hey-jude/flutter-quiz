@@ -4,7 +4,8 @@ import 'package:quiz/screen/last_page.dart';
 import '../model/question.dart';
 
 class QuestionPage extends StatefulWidget {
-  const QuestionPage({Key? key}) : super(key: key);
+  String? userName;
+  QuestionPage({Key? key, this.userName}) : super(key: key);
 
   @override
   _QuestionPageState createState() => _QuestionPageState();
@@ -109,7 +110,7 @@ class _QuestionPageState extends State<QuestionPage> {
             } else {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) =>
-                      LastPage(numOfCorrectAnswer, questions)));
+                      LastPage(numOfCorrectAnswer, questions, widget.userName)));
             }
           },
           child: Text(

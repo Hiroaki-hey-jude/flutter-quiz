@@ -4,14 +4,15 @@ import 'package:quiz/screen/question_page.dart';
 class StartPage extends StatefulWidget {
   const StartPage({Key? key}) : super(key: key);
 
+
   @override
   _StartPageState createState() => _StartPageState();
 }
 
 class _StartPageState extends State<StartPage> {
   final _form = GlobalKey<FormState>();
-  TextEditingController name = TextEditingController();
-  String? _name;
+  TextEditingController _textEditingController = TextEditingController();
+  String? name;
 
   @override
   Widget build(BuildContext context) {
@@ -58,32 +59,34 @@ class _StartPageState extends State<StartPage> {
               ),
               Padding(
                 padding: EdgeInsets.all(10),
-                child: Form(child: Container(
-                  key: _form,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: const Color(0xff005dff),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xff000000),
+                child: Form(
+                    key: _form,
+                    child: Container(
+                      child: TextFormField(
+                        controller: _textEditingController,
+                        validator: (value) {
+                          print("onValid");
+                          print(_textEditingController.text);
+                        },
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: const Color(0xff005dff),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xff000000),
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                          ),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xff000000),
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                          ),
+                          hintText: 'ニックネーム',
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
-                      focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xff000000),
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                      hintText: 'ニックネーム',
-                    ),
-                    // onSaved: (value) {
-                    //   print('何が起きてるのですか');
-                    //   _name = value;
-                    // },
-                  ),
-                )),
+                    )),
               ),
               SizedBox(
                 height: 20,
@@ -92,14 +95,15 @@ class _StartPageState extends State<StartPage> {
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => QuestionPage(),
-                      ),
-                    );
-                    // print(_name);
-                    // _form.currentState!.save();
+                    if (_form.currentState!.validate()) {
+                      name = _textEditingController.text;
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QuestionPage(userName: name),
+                        ),
+                      );
+                    }
                   },
                   child: Text(
                     '始める',
