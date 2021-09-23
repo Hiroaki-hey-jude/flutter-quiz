@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/screen/customize_page.dart';
 import 'package:quiz/screen/question_page.dart';
 import 'package:quiz/screen/start_page.dart';
 
@@ -37,7 +38,14 @@ class _LastPageState extends State<LastPage> {
             ),
             actions: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CustomizePage(),
+                    ),
+                  );
+                },
                 icon: Icon(Icons.dehaze),
               ),
             ],
