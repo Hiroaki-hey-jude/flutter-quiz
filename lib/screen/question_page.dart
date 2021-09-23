@@ -43,6 +43,26 @@ class _QuestionPageState extends State<QuestionPage> {
       ],
       solution: '正解はListViewです。',
     ),
+    Question(
+      text: 'Dartはオブジェクト指向プログラミングと呼ばれる言語です。同じオブジェクト指向プログラミング言語を選びなさい',
+      options: [
+        Option(code: 'A', text: 'Java', isCorrect: true),
+        Option(code: 'B', text: 'Python', isCorrect: false),
+        Option(code: 'C', text: 'JavaScript', isCorrect: false),
+        Option(code: 'D', text: 'CSS', isCorrect: false),
+      ],
+      solution: 'FlutterはDartというプログラミン言語を採用しています。',
+    ),
+    Question(
+      text: 'flutterで作られたアプリでよくバックエンドとして使用されているサービスは何か？',
+      options: [
+        Option(code: 'A', text: 'WordPress', isCorrect: false),
+        Option(code: 'B', text: 'IOS', isCorrect: false),
+        Option(code: 'C', text: 'SKL', isCorrect: false),
+        Option(code: 'D', text: 'Firebase', isCorrect: true),
+      ],
+      solution: 'FlutterはDartというプログラミン言語を採用しています。',
+    ),
   ];
   int questionNum = 0;
   int numOfCorrectAnswer = 0;
