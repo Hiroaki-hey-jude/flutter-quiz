@@ -24,18 +24,23 @@ class _LastPageState extends State<LastPage> {
             title: widget.userName != ''
                 ? Text('${widget.userName}さんの正解数は${widget.num}です')
                 : Text('名無しさんの正解数は${widget.num}です'),
-            leading:
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => StartPage(),
+                  ),
+                );
+              },
+              icon: Icon(Icons.arrow_back_sharp),
+            ),
+            actions: [
               IconButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => StartPage(),
-                    ),
-                  );
-                },
-                icon: Icon(Icons.arrow_back_sharp),
+                onPressed: () {},
+                icon: Icon(Icons.dehaze),
               ),
+            ],
           ),
         ),
         body: Padding(
