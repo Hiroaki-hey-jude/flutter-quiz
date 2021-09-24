@@ -25,22 +25,31 @@ class _CustomizePageState extends State<CustomizePage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
             child: Container(
               //color: Colors.lightBlueAccent,
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height/17,
+              // width: double.infinity,
+              // height: MediaQuery.of(context).size.height / 17,
               child: InkWell(
                 onTap: () {},
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: Text('ログアウト',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black
-                    ),),
+                child: Ink(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height / 17,
+                  color: Colors.lightBlueAccent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: Text(
+                          'ログアウト',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                      ),
+                      Icon(Icons.arrow_forward_ios_outlined)
+                    ],
                   ),
                 ),
               ),
