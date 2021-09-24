@@ -14,7 +14,7 @@ class _CustomizePageState extends State<CustomizePage> {
       backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        title: Text('カスタマイズ'),
+        title: Text('設定'),
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -27,9 +27,6 @@ class _CustomizePageState extends State<CustomizePage> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
             child: Container(
-              //color: Colors.lightBlueAccent,
-              // width: double.infinity,
-              // height: MediaQuery.of(context).size.height / 17,
               child: InkWell(
                 onTap: () {},
                 child: Ink(
