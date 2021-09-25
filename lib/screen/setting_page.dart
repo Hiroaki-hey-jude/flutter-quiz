@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/screen/log_out_page.dart';
 
 class CustomizePage extends StatefulWidget {
   const CustomizePage({Key? key}) : super(key: key);
@@ -28,7 +29,14 @@ class _CustomizePageState extends State<CustomizePage> {
             padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
             child: Container(
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LogOutPage(),
+                    ),
+                  );
+                },
                 child: Ink(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height / 17,
@@ -39,10 +47,9 @@ class _CustomizePageState extends State<CustomizePage> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: Text(
-                          'ログアウト',
+                          'アカウント管理',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                              fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ),
                       Icon(Icons.arrow_forward_ios_outlined)
