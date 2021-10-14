@@ -46,7 +46,7 @@ class _StartPageState extends State<StartPage> {
               SizedBox(height: 20),
               Container(
                 child: Text(
-                  'Quiz Men',
+                  'Flutter Quiz',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
