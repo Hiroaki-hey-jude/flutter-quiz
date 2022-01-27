@@ -1,17 +1,19 @@
-# quiz
+# name
+Flutterのクイズ
 
-A new Flutter project.
+![hello1](https://user-images.githubusercontent.com/76618285/151397030-e422ead5-418e-45fa-8c2c-95c1bc65383e.gif)
 
-## Getting Started
+## Overview
+Firebase AuthenticationとFirebase firestoreを組み合わせて作ったクイズアプリです。
+メールアドレスでアカウントを管理しています。
+クイズの問題はFlutterの基礎をを主に出題しています。
 
-This project is a starting point for a Flutter application.
+サインアウト機能も付いているのでいつでもサインアウトが出来ます。
 
-A few resources to get you started if this is your first Flutter project:
+## Requirement
+- macOS
+- Flutter 2.8.0
+- Dart 2.15.0
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# flutter-quiz
+## Author
+Hiroaki Ueda
